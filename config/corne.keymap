@@ -12,9 +12,9 @@
 #define DEFAULT 0
 #define LOWER   1
 #define RAISE   2
-#define NAV 	3
-#define MEDIA 	4
-
+#define NAV     3
+#define MEDIA   4
+#define SYS     5
 
 / {
 	behaviors {
@@ -67,13 +67,13 @@
 // -----------------------------------------------------------------------------------------
 // | ___ | F1  | F2  | F3  | F4  |     |   |  +  |  7  |  8  |  9  |  *  | ___ |
 // | ___ | F5  | F6  | F7  | F8  |     |   |  -  |  4  |  5  |  6  |  /  | ___ |
-// | ___ | F9  | F10 | F11 | F12 |     |   |  .  |  1  |  2  |  3  |  .  | ___ |
-//                   | ___ | ___ | ___ |   | ___ |  0  |  .  |
+// | ___ | F9  | F10 | F11 | F12 |     |   |  0  |  1  |  2  |  3  |  .  | ___ |
+//                   | ___ | ___ | ___ |   | ___ | ___ | ___ |
 			bindings = <
 &trans	&kp F1		&kp F2		&kp F3			&kp F4			&none		&kp KP_PLUS		&kp N7			&kp N8			&kp N9		&kp KP_MULTIPLY		&trans
 &trans	&hm LGUI F5	&hm LALT F6	&hm LCTRL F7	&hm LSHFT F8	&none		&kp KP_MINUS	&hm RSHFT N4	&hm RCTRL N5	&hm RALT N6	&hm RGUI KP_SLASH	&trans
-&trans	&kp F9		&kp F10		&kp F11			&kp F12			&none		&kp KP_DOT		&kp N1			&kp N2			&kp N3		&kp KP_DOT			&trans
-												&trans	&trans	&trans		&trans	&kp N0	&kp KP_DOT
+&trans	&kp F9		&kp F10		&kp F11			&kp F12			&none		&kp N0			&kp N1			&kp N2			&kp N3		&kp KP_DOT			&trans
+												&trans	&trans	&trans		&trans	&mo SYS	&trans
 			>;
 		};
 
@@ -85,10 +85,10 @@
 // | ___ |  *  |  %  |  ^  |  $  |  /  |   |     |  [  |  ]  |     |     | ___ |
 //                   | ___ | ___ | ___ |   | ___ | ___ | ___ |
 			bindings = <
-&trans	&kp EXCL		&kp AT			&kp PLUS		&kp EQUAL		&kp BSLH		&kp GRAVE	&kp LBRC	&kp RBRC	&none	&none 	&trans
-&trans	&hm LGUI AMPS	&hm LALT HASH	&hm LCTRL MINUS	&hm LSHFT UNDER	&kp PIPE		&kp TILDE	&kp LPAR	&kp RPAR	&kp SQT	&kp DQT	&trans
-&trans	&kp STAR		&kp PRCNT		&kp CARET		&kp DLLR		&kp FSLH		&none		&kp LBKT	&kp RBKT	&none	&none	&trans
-														&trans	&trans	&trans			&trans	&lt RAISE DEL	&kp K_APP
+&trans	&kp EXCL		&kp AT			&kp PLUS		&kp EQUAL		&kp BSLH		&kp GRAVE	&kp LBRC		&kp RBRC		&none			&none			&trans
+&trans	&hm LGUI AMPS	&hm LALT HASH	&hm LCTRL MINUS	&hm LSHFT UNDER	&kp PIPE		&kp TILDE	&hm RSHFT LPAR	&hm RCTRL RPAR	&hm RALT SQT	&hm RGUI DQT	&trans
+&trans	&kp STAR		&kp PRCNT		&kp CARET		&kp DLLR		&kp FSLH		&none		&kp LBKT		&kp RBKT		&none			&none			&trans
+														&trans	&mo SYS	&trans			&trans	&trans	&trans
 			>;
 		};
 
@@ -102,7 +102,7 @@
 &trans	&kp ESC		&none		&none		&none		&none			&none	&none		&none		&none		&none 		&trans
 &trans	&kp LGUI	&kp LALT	&kp LCTRL	&kp LSHFT	&kp K_APP		&none	&kp LEFT	&kp DOWN	&kp UP		&kp RIGHT	&trans
 &trans	&kp K_UNDO	&kp K_CUT	&kp K_COPY	&kp K_PASTE &kp K_REDO		&none	&kp HOME	&kp PG_DN	&kp PG_UP	&kp END		&trans
-						&kp TAB		&lt LOWER RET	&lt NAV SPACE		&trans	&lt RAISE DEL	&kp K_APP
+											&trans	&trans	&trans		&trans	&trans	&trans
 			>;
 		};
 
@@ -116,26 +116,23 @@
 &trans	&kp ESC		&none		&none		&none		&none		&none		&kp K_MUTE	&kp C_VOL_DN	&kp C_VOL_UP 	&kp PSCRN	&trans
 &trans	&kp LGUI	&kp LALT	&kp LCTRL	&kp LSHFT	&none		&kp C_PP	&kp C_RW	&kp C_PREV		&kp C_NEXT		&kp C_FF	&trans
 &trans	&kp K_APP	&none		&none		&none		&none		&none		&none		&none			&none			&none		&trans
-										&trans	&trans	&trans		&trans		&lt RAISE DEL	&kp K_APP
+										&trans	&trans	&trans		&trans	&trans	&trans
 			>;
 		};
 
-
-		// &ext_power EP_ON
-
-// 		other_layer {
-// // -----------------------------------------------------------------------------------------
-// // |  ESC |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | BKSP |
-// // | BTCLR| BT1 | BT2 | BT3 | BT4 | BT5 |   | LFT | DWN |  UP | RGT |     |      |
-// // | SHFT |     |     |     |     |     |   |     |     |     |     |     |      |
-// //                    | GUI |     | SPC |   | ENT |     | ALT |
-// 			bindings = <
-// 	 &kp ESC    &kp N1       &kp N2       &kp N3       &kp N4       &kp N5            &kp N6   &kp N7   &kp N8 &kp N9    &kp N0 &kp BSPC
-// 	 &bt BT_CLR &bt BT_CLR   &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3      &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans &trans
-// 	 &kp LSHFT  &trans       &trans       &trans       &trans       &trans            &trans   &trans   &trans &trans    &trans &trans
-// 					&kp LGUI     &trans       &kp SPACE         &kp RET &trans &kp RALT
-// 			>;
-// 		};
+		system_layer {
+// -----------------------------------------------------------------------------------------
+// | ___ | BT0 | BT1 | BT2 | BT3 | BT4 |   |     |     |     |     | BTC | ___ |
+// | ___ |     |     |     |     |     |   |     |     |     |     |     | ___ |
+// | ___ |     |     |     |     |     |   |     |     |     |     |     | ___ |
+//                   | ___ | ___ | ___ |   | ___ | ___ | ___ |
+			bindings = <
+&trans	&bt BT_SEL 0		&bt BT_SEL 1	&bt BT_SEL 2	&bt BT_SEL 3	&bt BT_SEL 4		&none	&none	&none	&none	&bt BT_CLR	&trans
+&trans	&ext_power EP_ON	&none			&none			&none 			&none				&none	&none	&none	&none	&none		&trans
+&trans	&ext_power EP_OFF	&none			&none			&none			&none				&none	&none	&none	&none	&none		&trans
+															&trans	&trans	&trans				&trans	&trans	&trans
+			>;
+		};
 
 	};
 };
